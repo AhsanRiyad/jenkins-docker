@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  jenkins-local:
+    image: jenkins:2.60.3
+    restart: always
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+   app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
